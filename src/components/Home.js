@@ -4,6 +4,20 @@ import { signOut,getAuth,onAuthStateChanged } from "firebase/auth"
 import { FaArrowRight,FaSearch} from 'react-icons/fa'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Drawer from "./Drawer";
+import Person from '@mui/icons-material/Person2';
+//import makeStyles from '@mui/styles/makeStyles';
+
+/*const useStyles = makeStyles({
+  container: {
+    display: "flex"
+  }
+});*/
+const classes = {
+  container: {
+      display: "flex"
+  },
+};
 
 const Home=()=>{
     var [people, setPeople] = useState([]);
@@ -12,6 +26,9 @@ const Home=()=>{
     var [link, setLink] = useState("");
     const navigate = useNavigate();   
     const auth = getAuth();
+    //const classes = useStyles();
+    const [isDrawerOpen,setIsDrawerOpen]=useState(false);
+
 
     useEffect(() => {
       var b = document.getElementById('search');
@@ -117,56 +134,60 @@ const Home=()=>{
 }
   
     return (
-      <div className="container">
-      {/* <nav className="navbar navbar-expand-md navbar-light bg-light sticky-top">
+      <div className="container-fluid">
+         <Drawer isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen}/>
+       <nav className="navbar navbar-expand-md navbar-light bg-light sticky-top">
       <div className="container-fluid">
         <a className="navbar-brand" href="#"><img src="" alt=""/></a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <button className="navbar-toggler" type="button"  onClick={()=>setIsDrawerOpen(true)}/*data-toggle="collapse" data-target="#navbarResponsive"*/>
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarResponsive">
-          <ul className="navbar-nav ml-auto">
+        <div className="collapse navbar-collapse" /*id="navbarResponsive"*/>
+        <h4 className='navbar-text'>Github Finder</h4> 
+          <ul className="navbar-nav m-auto">
             <li className="nav-item" active="true">
-              <a className="nav-link" onClick={handleLogout}>Sign Out</a>
+              <a className="nav-link signout" onClick={handleLogout}>Sign Out</a>
             </li>
              <li className="nav-item">
-                <a className="nav-link" href="#">About</a>
+                <a className="nav-link signout" href="#">About</a>
               </li>
               <li className="nav-item">
-                  <a className="nav-link" href="#">The developer</a>
+                  <a className="nav-link signout" href="#">The developer</a>
                 </li>
               <li className="nav-item">
-                  <a className="nav-link" href="#">Services</a>
+                  <a className="nav-link signout" href="#">Services</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Connect</a>
+                    <a className="nav-link signout" href="#">Connect</a>
                   </li> 
           </ul>
         </div>
       </div>
-    </nav> */}
-    <header>
+    </nav>
+    {/* <header>
       <nav>
       <a onClick={handleLogout}>Sign Out</a>
       </nav>
-    </header>
+    </header> */}
       <section className="content">
-      <h1>Github Finder</h1>
+      {/* <h1>Github Finder</h1> */}
       <div className='search'>
       <input id='search'  type="text" name="search" placeholder="search" onChange={(e) =>handleSearch(e.target.value)} />
-       <a id='anchor'>
-       <FaSearch
+       <a id='anchor' style={{width:'50px', padding:'0px 15px'}}>
+       {/* <FaSearch
         style={{ color: 'blue', cursor: 'pointer',padding:'8' }}
         onClick={()=>getUser(searchQuery,true)}
-      />
-        </a> 
+      /> */}
+      <i className="fas fa-search" style={{ color: 'blue', cursor: 'pointer'}}
+        onClick={()=>getUser(searchQuery,true)}></i>
+      </a> 
       </div>
         <ul className="list">    
         {peopleFromSearch.length==0? people.map((person, index) => (
           <li key={index}>
             <div>
             <img className='rounded-image' src={`${person.avatar_url}.png`} alt="Description"/>
-            <span className="text">{person.login}</span>
+            <span className="text align-bottom">{person.login}</span>
             </div>           
             <a href={`${person.html_url}`}>View Pofile</a>
               
@@ -175,7 +196,7 @@ const Home=()=>{
           <li key={index}>
             <div>
             <img className='rounded-image' src={`${person.avatar_url}.png`} alt="Description"/>
-            <span className="text">{person.login}</span>
+            <span className="text align-bottom">{person.login}</span>
             </div>           
             <a href={`${person.html_url}`}>View Pofile</a>
               

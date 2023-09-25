@@ -14,7 +14,7 @@ ul{
   padding: 0px;
 }
 
-.navbar{
+/*.navbar{
   padding: .8rem;
 }
 .navbar-nav li{
@@ -22,10 +22,10 @@ ul{
 }
 .nav-link{
   font-size: 1.1em !important;
-}
+}*/
 
 /* header styles */
-header{
+/*header{
   width: 100%;
   padding: 20px;
   text-align: right;
@@ -43,10 +43,23 @@ header a{
 header a:hover{
   background: #ffe100;
   color: black;
+}*/
+
+.signout{
+  margin-left: 10px;
+  /*border-bottom: 2px solid #ffe100;*/
+  padding: 4px;
+  cursor: pointer;
+}
+
+.signout:hover{
+  background: #ffe100;
+  color: black;
 }
 
 .content{
   max-width: 800px;
+  /*margin:TRBL*/
   margin:40px auto 0px;
 }
 
@@ -74,7 +87,7 @@ header a:hover{
 }
 
 .mymodal{
-  width: 300px;
+  width: 360px;
   padding: 30px;
   margin: 100px auto;
   border-radius: 10px;
@@ -83,22 +96,6 @@ header a:hover{
   /*text-align: center;*/
 }
 
-.search{
-  color: #000;
-  border-width: 0 0 0 0;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-  padding: 0px 0px 0px 0px;
-  margin: 0px 0px 0px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.search input{
-  color: #000;
-  border-width: 0px;
-  margin: 0;
-  padding: 15px;
-}
 /* form element styles */
 input{
   display: block;
@@ -112,6 +109,22 @@ input{
   border-width: 0 0 2px 0;
 }
 
+.search{
+  color: #000;
+  border-width: 0 0 0 0;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  display: flex;
+  align-items: center;
+  /*justify-content: space-between;*/
+}
+.search input{
+  color: #000;
+  border-width: 0px;
+  margin: 0;
+  padding: 15px;
+}
 
 button{
   margin-top: 10px;
